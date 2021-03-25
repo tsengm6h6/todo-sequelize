@@ -20,7 +20,7 @@ module.exports = app => {
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            return done(null, false, req.flash('error_msg', 'Email or Password incorrect.'))
+            return done(null, false, req.flash('error_msg', 'Incorrect Email or Password.'))
           }
           return done(null, user)
         })
@@ -31,7 +31,7 @@ module.exports = app => {
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.CALLBACK,
+    callbackURL: process.env.FACEBOOK_CALLBACK,
     profileFields: ['displayName', 'email']
   }, (accessToken, refreshToken, profile, done) => {
     const { name, email } = profile._json
