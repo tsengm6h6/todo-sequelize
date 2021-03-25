@@ -18,10 +18,6 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
-const db = require('./models')
-const Todo = db.Todo
-const User = db.User
-
 const usePassport = require('./config/passport')
 usePassport(app)
 
