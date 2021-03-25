@@ -46,8 +46,7 @@ router.put('/:id', (req, res) => {
   const { name, isDone } = req.body
   return Todo.update({
     name,
-    isDone: isDone === 'on',
-    updatedAt: new Date()
+    isDone: isDone === 'on'
   }, {
     where: {
       UserId,
