@@ -1,6 +1,11 @@
 # todo-sequelize
 A todo-list application built with Node.js, Express and MySQL.
 
+## Prerequisites
+* node
+* npm
+* mysql database
+
 ## Installation
 
 ### Environment
