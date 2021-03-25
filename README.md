@@ -37,17 +37,22 @@ $ cd todo-sequelize
 $ npm install
 ```
 
-3. Install nodemon
+3. Setup database
 ```
-$ npm install nodemon
+$ npx sequelize db:migrate
 ```
 
-4. Activate the server
+4. Run Seeder
+```
+$ npx sequelize db:seed:all
+```
+
+5. Activate the server
 ```
 $ npm run dev
 ```
 
-5. Find the below message for successful activation
+6. Find the below message for successful activation
 ```
 App is running on http://localhost:3000
 ```
