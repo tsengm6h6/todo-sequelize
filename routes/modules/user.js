@@ -22,32 +22,52 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
-  User.findOne({ where: { email } }).then(user => {
-    if (user) {
-      console.log('User already exists')
-      return res.render('register', {
-        name,
-        email,
-        password,
-        confirmPassword
-      })
-    }
-    return bcrypt
-      .genSalt(10)
-      .then(salt => bcrypt.hash(password, salt))
-      .then(hash => User.create({
-        name,
-        email,
-        password: hash
-      }))
-      .then(() => res.redirect('/'))
-      .catch(err => console.log(err))
-  })
+  if (!name || !email || !password || !confirmPassword) {
+    req.flash('error_msg', 'All fields are required.')
+  }
+  if (password !== confirmPassword) {
+    req.flash('error_msg', 'Incorrect password or confirmPassword.')
+  }
+  const errorMsg = req.flash('error_msg')
+  if (errorMsg.length) {
+    return res.render('register', {
+      name,
+      email,
+      password,
+      confirmPassword,
+      error_msg: errorMsg
+    })
+  }
+
+  return User.findOne({ where: { email } })
+    .then(user => {
+      if (user) {
+        req.flash('error_msg', 'User already exists')
+        const errorMsg = req.flash('error_msg')
+        return res.render('register', {
+          name,
+          email,
+          password,
+          confirmPassword,
+          error_msg: errorMsg
+        })
+      }
+      return bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => User.create({
+          name,
+          email,
+          password: hash
+        }))
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+    })
 })
 
 router.get('/logout', (req, res) => {
   req.logout()
-  // TODO: flash message
+  req.flash('success_msg', 'Logout Successfully')
   res.redirect('/users/login')
 })
 

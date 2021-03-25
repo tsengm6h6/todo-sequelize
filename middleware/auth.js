@@ -3,8 +3,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next()
     }
-    // TODO: flash message
-    console.log('Please login')
+    req.flash('warning_msg', 'Please login first.')
     res.redirect('/users/login')
   }
 }
