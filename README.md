@@ -1,5 +1,5 @@
-# Todo List 
-以 Node.js、Express 及 MySQL 打造的全端應用程式，使用 Bootstrap 搭配 Bootswatch 快速完成畫面呈現
+# Todo List :memo:
+以 Node.js、Express 及 MySQL 打造的全端小工具，利用 Bootstrap 搭配 Bootswatch 快速完成畫面呈現
 
 ## 實作重點
 - 使用 Express 建構 MVC 模式的應用程式
@@ -18,9 +18,9 @@
 ![alt 首頁](https://i.imgur.com/aRXaFjw.gif)
 
 ## Prerequisites
-* node
+* Node.js
 * npm
-* mysql database
+* MySQL database
 
 ## Installation
 
