@@ -1,5 +1,21 @@
-# todo-sequelize
-A todo-list application built with Node.js, Express and MySQL.
+# Todo List 
+以 Node.js、Express 及 MySQL 打造的全端應用程式，使用 Bootstrap 搭配 Bootswatch 快速完成畫面呈現
+
+## 實作重點
+- 使用 Express 建構 MVC 模式的應用程式
+- 使用 express.Router 建立模組路由
+- 透過 Handlebars 樣板引擎產生 HTML 檔案
+- 透過 Sequelize ORM 操作 MySQL 資料庫完成 CRUD 功能
+- 使用 Passport.js 套件實行本地、臉書驗證功能
+- 使用 bcrypt.js 套件將使用者密碼加密
+- 建立 .env 管理敏感資訊
+
+### 測試帳號
+- 帳號：root@example.com
+- 密碼：12345678
+
+
+![alt 首頁](https://i.imgur.com/aRXaFjw.gif)
 
 ## Prerequisites
 * node
